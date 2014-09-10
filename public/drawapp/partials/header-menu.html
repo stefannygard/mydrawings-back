@@ -1,0 +1,37 @@
+<div class="navbar navbar-default" 
+    ng-click="$event.stopPropagation()">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" 
+                ng-click="header.toggle()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">
+                MyDrawings
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse"
+            collapse="!header.collapse" 
+            ng-click="header.collapse = false">
+            
+            <ul class="nav navbar-nav navbar-left">
+              <li ng-class="header.menuClass('publikt-galleri')">
+                <a href="#/publikt-galleri">Publikt galleri</a>
+              </li>
+              <li ng-class="header.menuClass('mina-egna')" ng-show="header.isLoggedIn()">
+                <a href="#/mina-egna">Mina egna</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a ng-show="header.isLoggedIn()" href ng-click="header.logOut()">Logga ut</a>
+                <a ng-show="header.showLogIn()" href="#/logga-in">Logga in</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,13 @@
+
+  <form 
+    name="signInForm" 
+    class="form-signin" 
+    role="form" 
+    ng-submit="signInForm.$valid && login.login()"
+    novalidate>
+    <h2 class="form-signin-heading">Logga in</h2>
+    <input type="email" name="email" ng-model="login.credentials.email" class="form-control" placeholder="Email address" required autofocus>
+    <input type="password" name="password" ng-model="login.credentials.password" class="form-control" placeholder="Password" required>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
+  </form>

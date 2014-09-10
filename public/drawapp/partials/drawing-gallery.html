@@ -1,0 +1,9 @@
+<ul class="gallery">
+<li ng-repeat="drawing in gallery.drawings">
+  <a href ng-click="gallery.showDrawing($index)">
+    <img data-ng-src="{{drawing.img_thumb}}"/>
+  </a>
+</li>
+</ul>
+
+<drawing></drawing>
