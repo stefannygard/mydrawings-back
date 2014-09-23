@@ -29,7 +29,7 @@ return array(
 	|
 	*/
 
-	'lifetime' => 120,
+	'lifetime' => 1200,
 
 	'expire_on_close' => false,
 
@@ -122,7 +122,7 @@ return array(
 	|
 	*/
 
-	'domain' => null,
+	'domain' => '.herokuapp.com',
 
 	/*
 	|--------------------------------------------------------------------------
