@@ -12,6 +12,7 @@ header('Access-Control-Allow-Credentials: true');
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::when('*', 'csrf', array('post'));
 
 Route::get('/', function() {
 	return View::make('index');
@@ -23,6 +24,6 @@ Route::controller('user','UserController');
 Route::get('auth/csrf_token', function(){
   return Response::json(array('csrf_token' => csrf_token()));
 });
-Route::post('/auth/login', array('before' => 'csrf_json', 'uses' => 'AuthController@login'));
-Route::post('/auth/register', array('before' => 'csrf_json', 'uses' => 'AuthController@register'));
+Route::post('/auth/login', array('uses' => 'AuthController@login'));
+Route::post('/auth/register', array('uses' => 'AuthController@register'));
 Route::get('/auth/logout', 'AuthController@logout');

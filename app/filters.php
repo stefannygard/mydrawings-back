@@ -16,7 +16,7 @@ App::before(function($request)
     if (Request::getMethod() == "OPTIONS") {
         $headers = array(
             'Access-Control-Allow-Methods'=> 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Headers'=> 'X-Requested-With, content-type',);
+            'Access-Control-Allow-Headers'=> 'X-Requested-With, content-type, X-CSRF-Token',);
         return Response::make('', 200, $headers);
     }
 });
@@ -91,16 +91,9 @@ Route::filter('guest', function()
 | session does not match the one given in this request, we'll bail.
 |
 */
-Route::filter('csrf', function()
-{
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
-});
 
-Route::filter('csrf_json', function() {
-  if (Session::token() != Input::json('csrf_token')) {
-    //throw new Illuminate\Session\TokenMismatchException;
-  }
+Route::filter('csrf', function($route, $request) {
+  if (Session::token() != $request->header('X-CSRF-Token')) {
+	  throw new Illuminate\Session\TokenMismatchException;
+	}
 });
