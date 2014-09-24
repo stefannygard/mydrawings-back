@@ -22,10 +22,7 @@ Route::controller('drawings','DrawingController');
 Route::controller('user','UserController');
 
 Route::get('auth/csrf_token', function(){
-  if(intval(Session::get('test')<1)){ 
-    Session::put('test', time() ); 
-  }
-  return Response::json(array('csrf_token' => csrf_token(), 'test'=>Session::get('test')));
+  return Response::json(array('csrf_token' => csrf_token()));
 });
 Route::post('/auth/login', array('uses' => 'AuthController@login'));
 Route::post('/auth/register', array('uses' => 'AuthController@register'));
